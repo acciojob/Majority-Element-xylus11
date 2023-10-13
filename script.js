@@ -1,19 +1,24 @@
-//your code here
-//your code here
-function majorityElement(nums) {
-  let majority = nums[0];
-  let count = 1;
+function findMajorityElement(nums) {
+    let candidate = nums[0];
+    let count = 1;
 
-  for (let i = 1; i < nums.length; i++) {
-    if (count === 0) {
-      majority = nums[i];
-      count = 1;
-    } else if (nums[i] === majority) {
-      count++;
-    } else {
-      count--;
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] === candidate) {
+            count++;
+        } else {
+            count--;
+        }
+
+        if (count === 0) {
+            candidate = nums[i];
+            count = 1;
+        }
     }
-  }
 
-  return majority;
+    return candidate;
 }
+
+// Test the function
+const nums = [2, 1, 2];
+const majorityElement = findMajorityElement(nums);
+console.log(majorityElement); // Output: 2
